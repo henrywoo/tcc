@@ -18,11 +18,13 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef ONE_SOURCE
-#include "libtcc.c"
-#else
+// undefine:
+// ONE_SOURCE, CONFIG_TCC_BCHECK
+//
+// defined:
+// CONFIG_TCC_BACKTRACE
+
 #include "tcc.h"
-#endif
 
 static void help(void)
 {
@@ -57,12 +59,7 @@ static void help(void)
            "  -Wl,-opt[=val]  set linker option (see manual)\n"
            "Debugger options:\n"
            "  -g          generate runtime debug info\n"
-#ifdef CONFIG_TCC_BCHECK
-           "  -b          compile with built-in memory and bounds checker (implies -g)\n"
-#endif
-#ifdef CONFIG_TCC_BACKTRACE
            "  -bt N       show N callers in stack traces\n"
-#endif
            "Misc options:\n"
            "  -nostdinc   do not use standard system include paths\n"
            "  -nostdlib   do not link with standard crt and libraries\n"

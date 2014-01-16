@@ -33,39 +33,6 @@ ST_DATA int tcc_ext = 1;
 ST_DATA struct TCCState *tcc_state;
 
 /********************************************************/
-
-#ifdef ONE_SOURCE
-#include "tccpp.c"
-#include "tccgen.c"
-#include "tccelf.c"
-#include "tccrun.c"
-#ifdef TCC_TARGET_I386
-#include "i386-gen.c"
-#endif
-#ifdef TCC_TARGET_ARM
-#include "arm-gen.c"
-#endif
-#ifdef TCC_TARGET_C67
-#include "c67-gen.c"
-#endif
-#ifdef TCC_TARGET_X86_64
-#include "x86_64-gen.c"
-#endif
-#ifdef CONFIG_TCC_ASM
-#include "tccasm.c"
-#if defined TCC_TARGET_I386 || defined TCC_TARGET_X86_64
-#include "i386-asm.c"
-#endif
-#endif
-#ifdef TCC_TARGET_COFF
-#include "tcccoff.c"
-#endif
-#ifdef TCC_TARGET_PE
-#include "tccpe.c"
-#endif
-#endif /* ONE_SOURCE */
-
-/********************************************************/
 #ifndef CONFIG_TCC_ASM
 ST_FUNC void asm_instr(void)
 {
